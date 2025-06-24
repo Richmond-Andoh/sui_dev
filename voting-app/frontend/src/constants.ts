@@ -1,0 +1,1 @@
+export const DEVNET_PACKAGE_ID = '0x313c9530af195eae4bd2bb3e1a07e2d834cc7d2baded56d92b3310563aa0a414';
