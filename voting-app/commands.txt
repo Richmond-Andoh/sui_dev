@@ -1,0 +1,41 @@
+// Sending transaction to sui 
+
+// sending a single transaction
+
+sui client call \
+  --package 0x313c9530af195eae4bd2bb3e1a07e2d834cc7d2baded56d92b3310563aa0a414 \
+  --module dashboard \
+  --function create_proposal \
+  --args "First Proposal" "First Proposal Description" 1750739042 \
+  --gas-budget 10000000
+
+
+// sending transaction with ptb
+
+sui client ptb \
+ --move-call 0x313c9530af195eae4bd2bb3e1a07e2d834cc7d2baded56d92b3310563aa0a414::dashboard::create_proposal \
+ '"Seconde Proposal"' \
+ '"Second Proposal Description"' \
+  1750739042
+
+
+// sending multiple transaction with ptb
+
+sui client ptb \
+ --move-call 0x313c9530af195eae4bd2bb3e1a07e2d834cc7d2baded56d92b3310563aa0a414::dashboard::create_proposal \
+ '"Third Proposal"' '"Third Proposal Description"' 1750739042 \
+ --move-call 0x313c9530af195eae4bd2bb3e1a07e2d834cc7d2baded56d92b3310563aa0a414::dashboard::create_proposal \
+ '"Fourth Proposal"' '"Fourth Proposal Description"' 1750739042 \
+ --move-call 0x313c9530af195eae4bd2bb3e1a07e2d834cc7d2baded56d92b3310563aa0a414::dashboard::create_proposal \
+ '"Fifth Proposal"' '"Fifth Proposal Description"' 1750739042 \
+
+
+// spliting a coin and transfering to different address
+
+sui client ptb \
+ --move-call 0x313c9530af195eae4bd2bb3e1a07e2d834cc7d2baded56d92b3310563aa0a414::dashboard::create_proposal \
+ '"Sixth Proposal"' '"Sixth Proposal Description"' 1750739042 \
+ --split-coins gas "[1000]" \
+ --assign coin \
+ --transfer-objects "[coin]" @0x17cdc448fbf01ecea65209a2bcf8307183944403c2189ce040d23fd72092aff5 \
+ --gas-budget 100000000
