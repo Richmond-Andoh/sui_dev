@@ -12,12 +12,14 @@ fun subtract(num1 : u16, num2 : u16) : u16 {
     return difference
 }
 
+// Public function 
 public fun multiply(num1 : u32, num2 : u32) : u32 {
     let product = num1 * num2;
     // return product
     product
 }
 
+// Internal Function
 fun division(num1 : u64, num2 : u64) : u64 {
     let divide = num1 / num2;
     // return divide
