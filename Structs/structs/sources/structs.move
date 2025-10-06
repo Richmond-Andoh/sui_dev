@@ -19,10 +19,11 @@ module structs::structs;
     // public structs
     public struct MyStruct()
 
-    public struct Student {
+    public struct Student has key {
+        id:  UID, // default field
         age: u8,
         isMale: bool,
-        grades: Grade // referencing the Grade struct in the Student struct
+        grades: Grade// referencing the Grade struct in the Student struct
 
     }
 
@@ -106,4 +107,31 @@ module structs::structs;
 
       Points3D(x, y, z) = points;
       (x, y, z)
+    }
+
+
+module structs::structs_abilities;
+    
+    public struct Grade has copy, drop {
+        math: u8,
+        science: u8,
+        english: u8
+    };
+
+
+    public fun create_grade(){
+        let grade1: Grade = Grade {
+            math: 20,
+            science: 30,
+            english: 21
+        }
+
+        let mut grade2: Grade = Grade {
+            math: 20,
+            science: 30,
+            english: 21
+        };
+
+        debug::print(&grade1);
+        debug::print(&grade2);
     }
