@@ -1,4 +1,4 @@
-module counter::counter;
+module counter::counter {
 
 public struct Counter has key {
     id: UID,
@@ -6,20 +6,23 @@ public struct Counter has key {
     owner: address,
 }
 
-
 public fun create(ctx: &mut TxContext) {
-    transfer::share_object(Counter {
+    let counter = Counter {
         id: object::new(ctx),
         value: 0,
-        owner: ctx.sender()
-    })
+        owner: ctx.sender(),
+    };
+
+    transfer::share_object(counter);
 }
 
-public fun increement(counter: &mut Counter) {
+public fun increment(counter: &mut Counter) {
     counter.value = counter.value + 1;
 }
 
-public fun set_value(counter: &mut Counter, value: u64, ctx: &TxContext){
+public fun set_value(counter: &mut Counter, value: u64, ctx: &mut TxContext) {
     assert!(counter.owner == ctx.sender(), 0);
     counter.value = value;
+}
+
 }

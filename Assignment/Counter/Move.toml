@@ -1,6 +1,11 @@
 [package]
 name = "Counter"
 edition = "2024.beta" # edition = "legacy" to use legacy (pre-2024) Move
+# Semantic version for the package; update when releasing new versions.
+version = "0.1.0"
+# authors help publishing and discovery
+license = "MIT"
+authors = ["Richmond Andoh <richieandoh@example.com>"]
 # license = ""           # e.g., "MIT", "GPL", "Apache 2.0"
 # authors = ["..."]      # e.g., ["Joe Smith (joesmith@noemail.com)", "John Snow (johnsnow@noemail.com)"]
 
@@ -18,7 +23,7 @@ edition = "2024.beta" # edition = "legacy" to use legacy (pre-2024) Move
 # Override = { local = "../conflicting/version", override = true }
 
 [addresses]
-counter = "0x0"
+counter = "0x0" # Replace with your named address when publishing (or remap with the publish command)
 
 # Named addresses will be accessible in Move as `@name`. They're also exported:
 # for example, `std = "0x1"` is exported by the Standard Library.
