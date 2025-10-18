@@ -32,3 +32,24 @@ public fun create_wallet(ctx: &mut TxContext){
 public fun deposit(wallet: &mut Wallet, amount: u68) {
     wallet.tooken.balance = wallet.token.balance + amount;
 }
+
+public fun withdraw(wallet: &mut Wallet, amount: u64){
+    wallet.token.balance = wallet.token.balance - amount;
+}
+
+public fun get_token(wallet: &Wallet) : Token {
+    return wallet.token
+}
+
+public fun get_balance(wallet: &Wallet) : u64 {
+    return wallet.token.balance
+}
+
+public fun get_owner_address(wallet: &Wallet) : address {
+    return wallet.owner_address
+}
+
+public fun delete_wallet(wallet: Wallet) {
+    let { id, owner_address, token } = wallet;
+    id.delete();
+}
