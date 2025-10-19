@@ -25,12 +25,12 @@ public fun create_wallet(ctx: &mut TxContext){
         }
     };
 
-    trnasfer::transfer(wallet, ctx.sender());
+    transfer::transfer(wallet, ctx.sender());
 }
 
 
-public fun deposit(wallet: &mut Wallet, amount: u68) {
-    wallet.tooken.balance = wallet.token.balance + amount;
+public fun deposit(wallet: &mut Wallet, amount: u64) {
+    wallet.token.balance = wallet.token.balance + amount;
 }
 
 public fun withdraw(wallet: &mut Wallet, amount: u64){
@@ -50,6 +50,7 @@ public fun get_owner_address(wallet: &Wallet) : address {
 }
 
 public fun delete_wallet(wallet: Wallet) {
-    let { id, owner_address, token } = wallet;
+    let Wallet { id, owner_address: _, token: _ } = wallet;
     id.delete();
 }
+
