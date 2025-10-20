@@ -17,6 +17,7 @@ fun vec_map_playground() {
 	map.insert(3, b"three".to_string());
 
 	assert!(map.contains(&2));
+	debug::print(&map)
 
 	map.remove(&3);
 }
