@@ -51,6 +51,7 @@ public fun destroy(vault: Vault, ctx: &mut TxContext){
     // Check if the vault owner is the sender
     assert!(vault.owner == ctx.sender(), 1);
 
+    // destructure the vault fields
     let Vault { id, balance, owner: _} = vault;
     id.delete();
 
