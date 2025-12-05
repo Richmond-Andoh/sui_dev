@@ -22,7 +22,7 @@ public fun create_coin(coin_registry: &mut CoinRegistry, ctx: &mut TxContext) {
    let metadata_cap = coin_init.finalize(ctx);
 
    transfer::public_transfer(metadata_cap, ctx.sender());
-   // transfer::public_transfer(total_supply, ctx.sender());
+   transfer::public_transfer(total_supply, ctx.sender());
    transfer::public_transfer(treasury_cap, ctx.sender());
 }
 
